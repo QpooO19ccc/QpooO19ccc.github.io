@@ -1,8 +1,182 @@
-<p>Hello </p>
-<p>我是奶龙 </p>
-<p>很高兴你来到这里, 你可以在以下的网站看奶龙</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奶龙妙妙屋</title>
+<style>
+  * { box-sizing: border-box; }
 
-<ul>
-  <li> <a href="https://baike.baidu.com/item/%E5%A5%B6%E9%BE%99/58798883">知乎</a> </li>
-  <li> <a href="http://hejie.nigeerhuo.com">我的博客(已经不更细了,现在在知乎写文章)</a> </li>
-</ul>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    /* 黄色背景 */
+    background-color: #FFE873;
+    background-image: radial-gradient(circle at 50% 0%, #FFF8BF 0%, #FFE873 45%, #FFD23F 100%);
+    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Heiti SC", sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(16px, 4vh, 48px);
+    padding: clamp(20px, 5vh, 60px) 16px;
+    overflow-x: hidden;
+  }
+
+  /* ===== 第一行：居中的大标题 ===== */
+  .title {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: clamp(2.4rem, 9vw, 7rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    color: #FF6B00;
+    text-shadow:
+      3px 3px 0 #fff,
+      -3px 3px 0 #fff,
+      3px -3px 0 #fff,
+      -3px -3px 0 #fff,
+      0 12px 20px rgba(200, 110, 0, .35);
+    user-select: none;
+  }
+
+  /* ===== 第二行：左右两只奶龙，中间留空 ===== */
+  .stage {
+    width: 100%;
+    max-width: 1240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* 左右贴边，中间自然空出 */
+    gap: clamp(24px, 8vw, 160px);
+    padding: 0 clamp(10px, 3vw, 60px);
+  }
+
+  .dragon {
+    flex: 0 0 auto;
+    line-height: 0;
+  }
+
+  .dragon svg {
+    width: clamp(110px, 21vw, 270px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 14px 16px rgba(180, 110, 0, .3));
+    animation: floaty 3.2s ease-in-out infinite;
+  }
+
+  /* 右边整体水平翻转，与左边镜像对称 */
+  .dragon.right {
+    transform: scaleX(-1);
+  }
+
+  .dragon.right svg {
+    animation-delay: .45s;
+  }
+
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+  }
+
+  /* 中间留白区域（保持空白） */
+  .gap {
+    flex: 1 1 auto;
+  }
+
+  @media (max-width: 640px) {
+    .title { letter-spacing: 0.04em; }
+    .stage { gap: 10px; padding: 0 6px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 第一行：居中大标题 -->
+  <h1 class="title">奶龙妙妙屋</h1>
+
+  <!-- 第二行：左奶龙 ｜ 中间空出 ｜ 右奶龙（镜像） -->
+  <div class="stage">
+
+    <div class="dragon left">
+      <svg viewBox="0 0 240 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="奶龙">
+        <!-- 尾巴 -->
+        <ellipse cx="36" cy="168" rx="15" ry="36" transform="rotate(-38 36 168)"
+                 fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 脚 -->
+        <ellipse cx="88" cy="248" rx="26" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <ellipse cx="152" cy="248" rx="26" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 身体 -->
+        <ellipse cx="120" cy="195" rx="64" ry="52" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 肚皮 -->
+        <ellipse cx="120" cy="205" rx="42" ry="34" fill="#FFF3C4"/>
+        <!-- 小手 -->
+        <ellipse cx="54" cy="196" rx="21" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <ellipse cx="186" cy="196" rx="21" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 耳朵 -->
+        <ellipse cx="76" cy="48" rx="20" ry="30" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <ellipse cx="164" cy="48" rx="20" ry="30" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 头 -->
+        <circle cx="120" cy="115" r="78" fill="#FFD44D" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 腮红 -->
+        <ellipse cx="68" cy="140" rx="15" ry="10" fill="#FF9A9A" opacity="0.8"/>
+        <ellipse cx="172" cy="140" rx="15" ry="10" fill="#FF9A9A" opacity="0.8"/>
+        <!-- 眼睛 -->
+        <ellipse cx="95" cy="112" rx="11" ry="15" fill="#3B2508"/>
+        <ellipse cx="145" cy="112" rx="11" ry="15" fill="#3B2508"/>
+        <circle cx="99" cy="106" r="4.5" fill="#FFFFFF"/>
+        <circle cx="149" cy="106" r="4.5" fill="#FFFFFF"/>
+        <!-- 嘴巴 -->
+        <path d="M106 145 Q120 158 134 145" fill="none"
+              stroke="#B35A0B" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- 中间空出的留白 -->
+    <div class="gap"></div>
+
+    <div class="dragon right">
+      <svg viewBox="0 0 240 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="奶龙">
+        <!-- 尾巴 -->
+        <ellipse cx="36" cy="168" rx="15" ry="36" transform="rotate(-38 36 168)"
+                 fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 脚 -->
+        <ellipse cx="88" cy="248" rx="26" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <ellipse cx="152" cy="248" rx="26" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 身体 -->
+        <ellipse cx="120" cy="195" rx="64" ry="52" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 肚皮 -->
+        <ellipse cx="120" cy="205" rx="42" ry="34" fill="#FFF3C4"/>
+        <!-- 小手 -->
+        <ellipse cx="54" cy="196" rx="21" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <ellipse cx="186" cy="196" rx="21" ry="16" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 耳朵 -->
+        <ellipse cx="76" cy="48" rx="20" ry="30" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <ellipse cx="164" cy="48" rx="20" ry="30" fill="#FFC93C" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 头 -->
+        <circle cx="120" cy="115" r="78" fill="#FFD44D" stroke="#E07B1A" stroke-width="5"/>
+        <!-- 腮红 -->
+        <ellipse cx="68" cy="140" rx="15" ry="10" fill="#FF9A9A" opacity="0.8"/>
+        <ellipse cx="172" cy="140" rx="15" ry="10" fill="#FF9A9A" opacity="0.8"/>
+        <!-- 眼睛 -->
+        <ellipse cx="95" cy="112" rx="11" ry="15" fill="#3B2508"/>
+        <ellipse cx="145" cy="112" rx="11" ry="15" fill="#3B2508"/>
+        <circle cx="99" cy="106" r="4.5" fill="#FFFFFF"/>
+        <circle cx="149" cy="106" r="4.5" fill="#FFFFFF"/>
+        <!-- 嘴巴 -->
+        <path d="M106 145 Q120 158 134 145" fill="none"
+              stroke="#B35A0B" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+  </div>
+
+</body>
+</html>
